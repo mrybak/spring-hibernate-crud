@@ -1,5 +1,7 @@
+<!--  Spring configuration -->
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- namespace declaration, including AOP (aspects) and TX (transactions) -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
@@ -8,10 +10,13 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
+	<!-- tell Spring that we will use annotations -->
 	<context:annotation-config />
 
+	<!-- tell Spring where to look for annotated components -->
 	<context:component-scan base-package="pl.mrybak.webapps" />
 
+	<!-- resolves view names as follows: 'foo' => 'WEB-INF/jsp/foo.jsp' -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass">
@@ -25,6 +30,8 @@
 		</property>
 	</bean>
 
+
+	<!-- database connection details -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
@@ -46,6 +53,7 @@
 		</property>
 	</bean>
 
+	<!-- Hibernate Session Factory configuration with a reference to DataSource bean and a list of entities -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
 		destroy-method="destroy">
@@ -64,13 +72,13 @@
 		</property>
 	</bean>
 
-	<!-- TRANSACTION MANAGER -->
+	<!-- Spring's special transaction manager for Hibernate -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<!-- ANNOTATION DRIVEN TRANSACTIONS -->
+	<!-- we use annotations to manage transactions, so we need this -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
