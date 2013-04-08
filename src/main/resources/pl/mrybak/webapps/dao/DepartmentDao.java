@@ -5,10 +5,12 @@ import java.util.Set;
 import org.hibernate.Hibernate;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import pl.mrybak.webapps.model.Department;
 import pl.mrybak.webapps.model.Employee;
 
+@Component
 public class DepartmentDao extends MappedModelDao<Department> {
 
 	@Override
