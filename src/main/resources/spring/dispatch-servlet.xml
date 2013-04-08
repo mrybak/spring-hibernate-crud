@@ -1,5 +1,3 @@
-<!--  Spring configuration -->
-<?xml version="1.0" encoding="UTF-8"?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- namespace declaration, including AOP (aspects) and TX (transactions) -->
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -53,7 +51,8 @@
 		</property>
 	</bean>
 
-	<!-- Hibernate Session Factory configuration with a reference to DataSource bean and a list of entities -->
+	<!-- Hibernate Session Factory configuration with a reference to DataSource 
+		bean and a list of entities -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
 		destroy-method="destroy">
