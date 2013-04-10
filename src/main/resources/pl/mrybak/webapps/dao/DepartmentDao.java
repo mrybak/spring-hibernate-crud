@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.hibernate.Hibernate;
 import org.hibernate.LockMode;
+import org.hibernate.LockOptions;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +30,7 @@ public class DepartmentDao extends MappedModelDao<Department> {
 
 		Set<Employee> employees = department.getEmployees();
 		if (!Hibernate.isInitialized(employees)) {
-			session.lock(department, LockMode.NONE);
+			session.buildLockRequest(LockOptions.NONE).lock(department);
 			Hibernate.initialize(employees);
 		}
 

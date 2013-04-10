@@ -8,24 +8,23 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SimpleCRUD Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+    <properties>
+            <springVersion>3.2.2.RELEASE</springVersion>
+    </properties>
+
 	<dependencies>
 		<!-- basic Hibernate functions -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.3.2.GA</version>
-		</dependency>
-		<!-- we'll use annotations-based configuration, so this is obligatory -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.4.0.GA</version>
-		</dependency>
-		<!-- Spring MVC -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.2.0.Final</version>
+        </dependency>
+        <!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.0.2.RELEASE</version>
+			<version>${springVersion}</version>
 		</dependency>
 		<!-- logging -->
 		<dependency>
@@ -37,7 +36,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>3.0.2.RELEASE</version>
+			<version>${springVersion}</version>
 		</dependency>
 		<!-- BasicDataSource comes from here (to manage our connection pool) -->
 		<dependency>
@@ -49,7 +48,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.5.10</version>
+			<version>1.7.5</version>
 		</dependency>
 		<!-- database connector -->
 		<dependency>
@@ -61,13 +60,13 @@
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.8.0.GA</version>
+			<version>3.12.1.GA</version>
 		</dependency>
 		<!-- JSTL - framework for JSP (if-tags, forEach-tags...) -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
+			<version>1.2</version>
 		</dependency>
 		<!-- taglibs for JSTL -->
 		<dependency>

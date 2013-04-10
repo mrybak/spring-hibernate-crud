@@ -5,7 +5,7 @@ import java.beans.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
-import pl.mrybak.webapps.dao.DepartmentDao; 
+import pl.mrybak.webapps.dao.DepartmentDao;
 import pl.mrybak.webapps.model.Department;
 
 @Component
